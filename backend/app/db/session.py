@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine
-from sqlalchemy.orm import DeclarativeBase, sessionmaker
+from sqlalchemy.orm import DeclarativeBase, Session, sessionmaker
 
 from app.core.config import settings
 
@@ -12,13 +12,13 @@ class Base(DeclarativeBase):
 engine = create_engine(
     settings.database_url,
     echo=settings.debug,
-    future=True,
 )
 
 SessionLocal = sessionmaker(
     bind=engine,
     autoflush=False,
     autocommit=False,
+    class_=Session,
 )
 
 
@@ -27,6 +27,7 @@ def get_db():
     FastAPI dependency that provides a database session.
     """
     db = SessionLocal()
+
     try:
         yield db
     finally:
