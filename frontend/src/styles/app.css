@@ -251,3 +251,23 @@ td {
 ::-webkit-scrollbar-thumb:hover {
   background: #666;
 }
+
+.nav-item {
+    display: block;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    color: #ffffff;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.nav-item:hover {
+    background: #2d2d2d;
+}
+
+.nav-item.active {
+    background: #22c55e;
+    color: #ffffff;
+    font-weight: 600;
+}
